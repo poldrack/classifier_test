@@ -28,7 +28,7 @@ def cheating_classifier(X,y):
     """
     skf=StratifiedKFold(y,n_folds=4)
     pred=numpy.zeros(len(y))
-    knn=KNeighborsClassifier() #LinearSVC()
+    knn=KNeighborsClassifier()
     for train,test in skf:
         knn.fit(X,y) # this is using the entire dataset, rather than just training
         pred[test]=knn.predict(X[test,:])
@@ -46,7 +46,7 @@ def shuffle_test(X,y,clf,nperms=1000):
 def crossvalidated_classifier(X,y):
     skf=StratifiedKFold(y,n_folds=4)
     pred=numpy.zeros(len(y))
-    knn=KNeighborsClassifier() #LinearSVC()
+    knn=KNeighborsClassifier() 
     for train,test in skf:
         knn.fit(X[train,:],y[train])
         pred[test]=knn.predict(X[test,:])
